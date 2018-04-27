@@ -1,6 +1,6 @@
 # Deep Learning  - Conda Environment
 
-Creates a Conda environemt for Deep Learning with Tensorflow, Keras, Pandas, SciPy, SKLearn, Pandas, Seaborn
+Creates a Conda environemt for Deep Learning with Tensorflow, Keras, Pandas, SciPy, SKLearn, Pandas, Seaborn etc
 
 ## Refer
 https://conda.io/docs/user-guide/tasks/manage-environments.html
