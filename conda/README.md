@@ -8,7 +8,9 @@ https://conda.io/docs/user-guide/tasks/manage-environments.html
 ## To create an environment
 conda env create -f dl_env.yml
 
-# Test if everything is up & running (refer: https://github.com/leriomaggio/deep-learning-keras-tensorflow)
+# Test if everything is up & running 
+
+(Adapted from: https://github.com/leriomaggio/deep-learning-keras-tensorflow)
 
 ## 1. Check import
 
