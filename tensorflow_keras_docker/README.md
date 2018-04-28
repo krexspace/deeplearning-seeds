@@ -7,12 +7,18 @@ Pull the Dockerfile to any directory
 
 ```
 docker image build -t <new_image_name> .
+# Example
+docker image build -t dltensorflow .
 ```
+Don't forget the dot at the end pointing to the Dockerfile location.
 
 ## To Run
 ```
-docker run -i -t -v ${PWD}:src <new_image_name> /bin/bash
+docker run -i -t -v ${PWD}:/app <new_image_name> /bin/bash
+# Example
+docker run -i -t -v ${PWD}:src dltensorflow /bin/bash
 ```
+This will also mount the current directory into the working directory in the container.
 
 Once inside the container, do
 ```
