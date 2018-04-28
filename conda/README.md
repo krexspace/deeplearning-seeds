@@ -6,6 +6,7 @@ Creates a Conda environemt for Deep Learning with Tensorflow, Keras, Pandas, Sci
 https://conda.io/docs/user-guide/tasks/manage-environments.html
 
 ## To create an environment
+Prerequisites: Anaconda3
 conda env create -f dl_env.yml
 
 # Test if everything is up & running 
