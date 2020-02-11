@@ -1,6 +1,6 @@
-#import matplotlib
-#matplotlib.use("Agg")
-#import matplotlib.pylab as plt
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pylab as plt
 from math import ceil
 import numpy as np
 from tensorflow.keras.models import Sequential, Model
