@@ -159,7 +159,7 @@ def train(ndf=64, ngf=64, z_dim=100, lr_d=2e-4, lr_g=2e-4, epochs=100,
     X_train, _ = get_data()
     image_shape = X_train[0].shape
     print("image shape {}, min val {}, max val {}".format(
-        image_shape, X_train[0].min(), X_train[0].max()))
+        image_shape, X_train[0], X_train[0].min(), X_train[0].max()))
 
     # plot real images for reference
     plot_images(X_train[:n_checkpoint_images], "real_images.png")
