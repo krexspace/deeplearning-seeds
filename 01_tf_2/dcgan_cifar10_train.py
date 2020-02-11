@@ -138,6 +138,7 @@ def plot_images(images, filename):
     images = (images.reshape(grid_size, grid_size, h, w, c)
               .transpose(0, 2, 1, 3, 4)
               .reshape(grid_size*h, grid_size*w, c))
+    images = (images + 1.0) / 2
     plt.figure(figsize=(16, 16))
     plt.imsave(filename, images)
 
