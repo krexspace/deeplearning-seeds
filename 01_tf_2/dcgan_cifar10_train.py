@@ -8,7 +8,7 @@ from tensorflow.keras.layers import Input, ReLU, LeakyReLU, Dense
 from tensorflow.keras.layers.core import Activation, Reshape
 from tensorflow.keras.layers.normalization import BatchNormalization
 from tensorflow.keras.layers.convolutional import Conv2D, Conv2DTranspose
-from tensorflow.keras.layers.core import Flatten
+from tensorflow.keras.layers import Flatten
 from tensorflow.keras.optimizers import SGD, Adam
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras import initializers
