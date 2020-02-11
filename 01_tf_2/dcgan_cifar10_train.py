@@ -172,57 +172,57 @@ def train(ndf=64, ngf=64, z_dim=100, lr_d=2e-4, lr_g=2e-4, epochs=100,
     D.compile(Adam(lr=lr_d, beta_1=0.5), loss='binary_crossentropy',
               metrics=['binary_accuracy'])
 
-    # define D(G(z)) graph for training the Generator
-    D.trainable = False
-    z = Input(shape=(z_dim, ))
-    D_of_G = Model(inputs=z, outputs=D(G(z)))
+    # # define D(G(z)) graph for training the Generator
+    # D.trainable = False
+    # z = Input(shape=(z_dim, ))
+    # D_of_G = Model(inputs=z, outputs=D(G(z)))
 
-    # define Generator's Optimizer
-    D_of_G.compile(Adam(lr=lr_g, beta_1=0.5), loss='binary_crossentropy',
-                   metrics=['binary_accuracy'])
+    # # define Generator's Optimizer
+    # D_of_G.compile(Adam(lr=lr_g, beta_1=0.5), loss='binary_crossentropy',
+    #                metrics=['binary_accuracy'])
 
-    # get labels for computing the losses
-    labels_real = np.ones(shape=(batch_size, 1))
-    labels_fake = np.zeros(shape=(batch_size, 1))
+    # # get labels for computing the losses
+    # labels_real = np.ones(shape=(batch_size, 1))
+    # labels_fake = np.zeros(shape=(batch_size, 1))
 
-    losses_d, losses_g = [], []
+    # losses_d, losses_g = [], []
 
-    # fix a z vector for training evaluation
-    z_fixed = np.random.uniform(-1, 1, size=(n_checkpoint_images, z_dim))
+    # # fix a z vector for training evaluation
+    # z_fixed = np.random.uniform(-1, 1, size=(n_checkpoint_images, z_dim))
 
-    # training loop
-    for e in range(epochs):
-        print("Epoch {}".format(e))
-        for i in range(len(X_train) // batch_size):
+    # # training loop
+    # for e in range(epochs):
+    #     print("Epoch {}".format(e))
+    #     for i in range(len(X_train) // batch_size):
 
-            # update Discriminator weights
-            D.trainable = True
+    #         # update Discriminator weights
+    #         D.trainable = True
 
-            # Get real samples
-            real_images = X_train[i*batch_size:(i+1)*batch_size]
-            loss_d_real = D.train_on_batch(x=real_images, y=labels_real)[0]
+    #         # Get real samples
+    #         real_images = X_train[i*batch_size:(i+1)*batch_size]
+    #         loss_d_real = D.train_on_batch(x=real_images, y=labels_real)[0]
 
-            # Fake Samples
-            z = np.random.uniform(-1, 1, size=(batch_size, z_dim))
-            fake_images = G.predict_on_batch(z)
-            loss_d_fake = D.train_on_batch(x=fake_images, y=labels_fake)[0]
+    #         # Fake Samples
+    #         z = np.random.uniform(-1, 1, size=(batch_size, z_dim))
+    #         fake_images = G.predict_on_batch(z)
+    #         loss_d_fake = D.train_on_batch(x=fake_images, y=labels_fake)[0]
 
-            # Compute Discriminator's loss
-            loss_d = 0.5 * (loss_d_real + loss_d_fake)
+    #         # Compute Discriminator's loss
+    #         loss_d = 0.5 * (loss_d_real + loss_d_fake)
 
-            # update Generator weights, do not update Discriminator weights
-            D.trainable = False
-            loss_g = D_of_G.train_on_batch(x=z, y=labels_real)[0]
+    #         # update Generator weights, do not update Discriminator weights
+    #         D.trainable = False
+    #         loss_g = D_of_G.train_on_batch(x=z, y=labels_real)[0]
 
-        losses_d.append(loss_d)
-        losses_g.append(loss_g)
+    #     losses_d.append(loss_d)
+    #     losses_g.append(loss_g)
 
-        if (e % epoch_per_checkpoint) == 0:
-            print("loss_d={:.5f}, loss_g={:.5f}".format(loss_d, loss_g))
-            fake_images = G.predict(z_fixed)
-            print("\tPlotting images and losses")
-            plot_images(fake_images, "fake_images_e{}.png".format(e))
-            plot_losses(losses_d, losses_g, "losses.png")
+    #     if (e % epoch_per_checkpoint) == 0:
+    #         print("loss_d={:.5f}, loss_g={:.5f}".format(loss_d, loss_g))
+    #         fake_images = G.predict(z_fixed)
+    #         print("\tPlotting images and losses")
+    #         plot_images(fake_images, "fake_images_e{}.png".format(e))
+    #         plot_losses(losses_d, losses_g, "losses.png")
 
 
 train()
