@@ -1,13 +1,13 @@
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pylab as plt
+#import matplotlib
+#matplotlib.use("Agg")
+#import matplotlib.pylab as plt
 from math import ceil
 import numpy as np
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Input, ReLU, LeakyReLU, Dense
-from tensorflow.keras.layers.core import Activation, Reshape
-from tensorflow.keras.layers.normalization import BatchNormalization
-from tensorflow.keras.layers.convolutional import Conv2D, Conv2DTranspose
+from tensorflow.keras.layers import Activation, Reshape
+from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.layers import Conv2D, Conv2DTranspose
 from tensorflow.keras.layers import Flatten
 from tensorflow.keras.optimizers import SGD, Adam
 from tensorflow.keras.datasets import cifar10
