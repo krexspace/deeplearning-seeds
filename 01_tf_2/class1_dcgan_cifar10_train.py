@@ -3,6 +3,15 @@ matplotlib.use("Agg")
 import matplotlib.pylab as plt
 from math import ceil
 import numpy as np
+
+# https://github.com/tensorflow/tensorflow/issues/25446
+# Fix for CUda issue: 2020-02-13 09:19:37.280389: E tensorflow/stream_executor/cuda/cuda_dnn.cc:329] Could not create cudnn handle: CUDNN_STATUS_ALLOC_FAILED
+import tensorflow as tf
+gpu_devices = tf.config.experimental.list_physical_devices('GPU')
+for device in gpu_devices:
+    tf.config.experimental.set_memory_growth(device, True)
+## ------------end fix ---------------##
+
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Input, ReLU, LeakyReLU, Dense
 from tensorflow.keras.layers import Activation, Reshape
